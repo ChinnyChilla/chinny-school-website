@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+    <script type="text/javascript" src="kenimatics-calculator.js"></script>
+
+</head>
+<body>
+    <h2>Kenimatics variable table calculator</h2>
+    <h3>Leave the boxes blank if no number!</h3>
+    <!-- <form name="Kenimatics calculator" id="Kenimatics">
+        Inital Velocity (m/s): <input type="number" name="inital_velocity" id="inital_velocity">
+        <br>
+        Final Velocity (m/s): <input type="number" name="final_velocity" id="final_velocity">
+        <br>
+        Average Velocity (m/s): <input type="number" name="average_velocity" id="average_velocity">
+        <br>
+        Time (s): <input type="number" name="time" id="time">
+        <br>
+        Distance (m): <input type="number" name="distance" id="distance">
+        <br>
+        Acceleration (m/s^2) <input type="number" name="Acceleration" id="acceleration">
+        <br>
+        <input type="button" value="Calculate" id="calculate">
+        <input type="reset" value="Clear all values">
+    </form> -->
+    <!-- <br> -->
+    <form name="Kenimatics calculator table" id="KenimaticsTable">
+        <table>
+            <tr>
+                <th>Axis</th>
+                <th>Inital Velocity</th>
+                <th>Final Velocity</th>
+                <th>Average Velocity</th>
+                <th>Time</th>
+                <th>Distance (Displacement)</th>
+                <th>Acceleration</th>
+            </tr>
+            <tr>
+                <th>X</th>
+                <th><input type="number" name="inital_velocity" id="x_inital_velocity"></th>
+                <th><input type="number" name="final_velocity" id="x_final_velocity"></th>
+                <th><input type="number" name="average_velocity" id="x_average_velocity"></th>
+                <th><input type="number" name="time" id="x_time"></th>
+                <th><input type="number" name="distance" id="x_distance"></th>
+                <th><input type="number" name="Acceleration" id="x_acceleration"></th>
+            </tr>
+            <tr>
+                <th>Y</th>
+                <th><input type="number" name="inital_velocity" id="y_inital_velocity"></th>
+                <th><input type="number" name="final_velocity" id="y_final_velocity"></th>
+                <th><input type="number" name="average_velocity" id="y_average_velocity"></th>
+                <th><input type="number" name="time" id="y_time"></th>
+                <th><input type="number" name="distance" id="y_distance"></th>
+                <th><input type="number" name="Acceleration" id="y_acceleration"></th>
+            </tr>
+        </table>
+        <input type="button" value="Calculate" id="calculate">
+        <input type="reset" value="Clear all values">
+        <br>
+        Solve for the x-axis?<input type="checkbox" id="solve-x-axis">
+        <br>
+        Time for x and y axis is the same?<input type="checkbox" id="same-xy-time">
+
+    </form>
+</body>
+</html>
