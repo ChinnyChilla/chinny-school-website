@@ -12,7 +12,8 @@ const kenimaticsCalculator = fs.readFileSync('./kenimatics-calculator/kenimatics
 const displacementVelocity = fs.readFileSync('./displacement-velocity/displacement-velocity.html')
 // SERVER
 // Server Ip and port from config file
-const {serverIP, serverPort} = configFile;
+const {serverIP} = configFile;
+const serverPort = process.env.PORT || 8000
 // Makes the neccesary files public
 server.use(express.static('public'));
 server.use(express.static('kenimatics-calculator'))
@@ -48,5 +49,5 @@ server.get('*', (req, res) => {
 
 // Server listening on port 8000
 server.listen(serverPort, () => {
-    console.log("Server listening on port 8000");
+    console.log("Server listening on port " + serverPort);
 });
