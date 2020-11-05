@@ -1,6 +1,7 @@
 window.onload = function () {
     var calculate = document.getElementById('calculate')
     var createRow = document.getElementById('createRow')
+    var idCount = 0
 
     createRow.onclick = function () {
         var table = document.getElementById('table1')
@@ -30,5 +31,9 @@ window.onload = function () {
         td.appendChild(inputNumber)
         table.appendChild(td)
         table.appendChild(tr)
+    }
+    calculate.onclick = function ()   {
+        var distances = document.getElementById('distance')
+        console.log(distances.selectedOptions);
     }
 }
