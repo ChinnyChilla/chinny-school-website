@@ -14,7 +14,18 @@ window.onload = function () {
         var time_y = document.getElementById("y_time").value;
         var distance_y = document.getElementById("y_distance").value;
         var acceleration_y = document.getElementById("y_acceleration").value;
+        //all the variables for the x axis
+        var emptySpaces_x = 123
+        var initalVel_x = document.getElementById("x_inital_velocity").value;
+        var finalVel_x = document.getElementById("x_final_velocity").value;
+        var averageVel_x = document.getElementById("x_average_velocity").value;
+        var time_x = document.getElementById("x_time").value;
+        var distance_x = document.getElementById("x_distance").value;
+        var acceleration_x = document.getElementById("x_acceleration").value;
         // If it is a number change it to a number and not a string
+        if (document.getElementById("same-xy-time").checked && time_y === "" && time_x !== "") {
+            time_y = time_x;
+        };
         if (initalVel_y !== "") {
             initalVel_y = parseFloat(initalVel_y);
         };
@@ -34,14 +45,7 @@ window.onload = function () {
             acceleration_y = parseFloat(acceleration_y);
         };
         
-        //all the variables for the x axis
-        var emptySpaces_x = 123
-        var initalVel_x = document.getElementById("x_inital_velocity").value;
-        var finalVel_x = document.getElementById("x_final_velocity").value;
-        var averageVel_x = document.getElementById("x_average_velocity").value;
-        var time_x = document.getElementById("x_time").value;
-        var distance_x = document.getElementById("x_distance").value;
-        var acceleration_x = document.getElementById("x_acceleration").value;
+
         // checks if they are blank
         if (initalVel_x !== "") {
             initalVel_x = parseFloat(initalVel_x);
@@ -63,9 +67,7 @@ window.onload = function () {
         };
 
         let exitFlag = false;
-        if (document.getElementById("same-xy-time").checked && time_y === "" && time_x !== "") {
-            time_y = time_x;
-        };
+
 
 
         while (emptySpaces_y !== 0 && exitFlag === false) {
