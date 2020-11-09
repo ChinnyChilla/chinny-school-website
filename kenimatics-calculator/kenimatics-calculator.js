@@ -200,6 +200,9 @@ window.onload = function () {
                 } else if (finalVel_x !== "") {
                     averageVel_x = finalVel_x;
                     solveCount_x++;
+                } else if (distance_x !== "" && time_x !== "") {
+                    averageVel_x = distance_x / time_x;
+                    solveCount_x++;
                 };
             };
             // solves for time if not there
