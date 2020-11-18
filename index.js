@@ -10,6 +10,7 @@ var server = express()
 const mainPage = fs.readFileSync('./html/main-page.html', 'utf-8')
 const kenimaticsCalculator = fs.readFileSync('./kenimatics-calculator/kenimatics-calculator.html', 'utf-8')
 const displacementVelocity = fs.readFileSync('./displacement-velocity/displacement-velocity.html')
+const computerLearning = fs.readFileSync('./computer-learning/computer-learning.html')
 // SERVER
 // Server Ip and port from config file
 const {serverIP} = configFile;
@@ -18,6 +19,7 @@ const serverPort = process.env.PORT || 8000
 server.use(express.static('public'));
 server.use(express.static('kenimatics-calculator'))
 server.use(express.static('displacement-velocity'))
+server.use(express.static('computer-learning'))
 // Server Overview Page
 server.get('/', (req, res) => {
     res.writeHead(200, { 'content-type': 'text/html' });
@@ -40,6 +42,11 @@ server.get("/secret", (req, res) => {
     res.writeHead(200, {'content-type': "text/plain"});
     res.end("Very Secret :p");
 });
+//Server comptuer applications learning page
+server.get("/computer-learning", (req, res) => {
+    res.writeHead(200, { 'content-type': 'text/html' });
+    res.end(computerLearning)
+})
 
 // Throwing an error if anything other than other pages
 server.get('*', (req, res) => {
