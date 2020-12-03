@@ -1,0 +1,17 @@
+body {
+    background-color: green;
+
+}
+#container {
+    width: 50%;
+    background-color: darkred;
+    text-align: center;
+    margin: 10px auto;
+    border: 4px solid black;
+}
+#header {
+    font-size: 200%;
+}
+a {
+    border: 2px solid blue
+}

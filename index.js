@@ -12,6 +12,7 @@ const kenimaticsCalculator = fs.readFileSync('./kenimatics-calculator/kenimatics
 const displacementVelocity = fs.readFileSync('./displacement-velocity/displacement-velocity.html')
 const computerLearning = fs.readFileSync('./computer-learning/computer-learning.html')
 const computerLearningPage2 = fs.readFileSync('./computer-learning/computer-learning-page-2.html')
+const computerLearningPage3 = fs.readFileSync('./computer-learning/computer-learning-page-3.html')
 // SERVER
 // Server Ip and port from config file
 const {serverIP} = configFile;
@@ -53,7 +54,11 @@ server.get("/computer-learning-page-2", (req, res) => {
     res.writeHead(404, {'content-type': 'text/html'});
     res.end(computerLearningPage2);
 });
-
+//Server computer applications 3rd page
+server.get("/computer-learning-page-3", (req, res) => {
+    res.writeHead(404, {'content-type': 'text/html'});
+    res.end(computerLearningPage3);
+});
 // Throwing an error if anything other than other pages
 server.get('*', (req, res) => {
     res.writeHead(404, {'content-type': 'text/plain'});
