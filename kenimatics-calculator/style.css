@@ -1,0 +1,13 @@
+* {
+    color: darkred;
+}
+
+body {
+    background-color: blue;
+}
+th {
+    color: lightgreen;
+    background-color: yellow;
+    border: 10px;
+
+}
