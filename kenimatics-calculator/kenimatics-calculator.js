@@ -1,6 +1,7 @@
 
 window.onload = function () {
     var submitButton = document.getElementById('calculate')
+    var degreeSubmit = document.getElementById('degreeCalculate')
     
     submitButton.onclick = function () {
         console.log("Executing script");
