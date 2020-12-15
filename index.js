@@ -28,7 +28,7 @@ server.use(express.static(path.join(__dirname + '/public/styles')))
 server.get('/', (req, res) => {
     res.end(mainPage);
 });
-// Kenimatics Calculator page
+// HTML files
 server.get('/html/*', (req, res) => {
     var { url } = req
     var url = url.split("/")
@@ -41,7 +41,6 @@ server.get('/html/*', (req, res) => {
             var fileIndex = filesNames[folderIndex].indexOf(url[3])
             console.log(fileIndex)
             var fileLoaded = fs.readFileSync('./html/' + htmlFolder[folderIndex] + "/" + filesNames[folderIndex][fileIndex])
-            res.writeHead(200, {'content-type': 'text/html'})
             res.end(fileLoaded)
         } else {
         res.writeHead(404)
