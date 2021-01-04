@@ -1,0 +1,19 @@
+* {
+    color: red
+}
+#container {
+    position: relative;
+    background-color: green;
+}
+#topic {
+    position: relative;
+    background-color:yellow;
+}
+a {
+    position: relative;
+    float: right
+}
+h1 {
+    color: lightblue;
+    font-size: 20px;
+}

@@ -3,67 +3,56 @@ const url = require('url')
 const fs = require('fs')
 const express = require('express')
 const configFile = require('./config.json')
+const path = require('path')
 
 // Express
 var server = express()
 // READ ALL FILES
-const mainPage = fs.readFileSync('./html/main-page.html', 'utf-8')
-const kenimaticsCalculator = fs.readFileSync('./kenimatics-calculator/kenimatics-calculator.html', 'utf-8')
-const displacementVelocity = fs.readFileSync('./displacement-velocity/displacement-velocity.html')
-const computerLearning = fs.readFileSync('./computer-learning/computer-learning.html')
-const computerLearningPage2 = fs.readFileSync('./computer-learning/computer-learning-page-2.html')
-const computerLearningPage3 = fs.readFileSync('./computer-learning/computer-learning-page-3.html')
+const mainPage = fs.readFileSync('./html/main-page/main-page.html');
+const htmlFolder = fs.readdirSync('./html');
+console.log(htmlFolder)
+
+// get all files and put them in arrays
+const filesNames = []
+for (i = 0; i < htmlFolder.length; i++) {
+    filesNames.push(fs.readdirSync('./html/' + htmlFolder[i]))
+};
+console.log(filesNames)
 // SERVER
 // Server Ip and port from config file
 const {serverIP} = configFile;
 const serverPort = process.env.PORT || 8000
 // Makes the neccesary files public
-server.use(express.static('public'));
-server.use(express.static('kenimatics-calculator'))
-server.use(express.static('displacement-velocity'))
-server.use(express.static('computer-learning'))
+server.use(express.static(path.join(__dirname + '/public/styles')))
 // Server Overview Page
 server.get('/', (req, res) => {
-    res.writeHead(200, { 'content-type': 'text/html' });
     res.end(mainPage);
 });
+// HTML files
+server.get('/html/*', (req, res) => {
+    var { url } = req
+    var url = url.split("/")
+    console.log(url)
+    if (htmlFolder.includes(url[2])) {
+        var folderIndex = htmlFolder.indexOf(url[2])
+        console.log("folderindex" + folderIndex)
+        if (filesNames[folderIndex].includes(url[3])) {
+            console.log('file found')
+            var fileIndex = filesNames[folderIndex].indexOf(url[3])
+            console.log(fileIndex)
+            var fileLoaded = fs.readFileSync('./html/' + htmlFolder[folderIndex] + "/" + filesNames[folderIndex][fileIndex])
+            res.end(fileLoaded)
+        } else {
+        res.writeHead(404)
+        res.end("Page not Found")
+        }
+    } else {
+        res.writeHead(404)
+        res.end("Page not Found")
+    }
 
+})  
 // Server Kenimatics Variable Calculator Page
-server.get("/kenimatics-calculator", (req, res) => {
-    res.writeHead(200, {'content-type': 'text/html'});
-    res.end(kenimaticsCalculator);
-});
-
-// Server displacement-velocity calculator page
-server.get("/displacement-velocity", (req, res) => {
-    res.writeHead(200, { 'content-type': 'text/html' });
-    res.end(displacementVelocity);
-})
-// Server secret page
-server.get("/secret", (req, res) => {
-    res.writeHead(200, {'content-type': "text/plain"});
-    res.end("Very Secret :p");
-});
-//Server comptuer applications learning main page
-server.get("/computer-learning", (req, res) => {
-    res.writeHead(200, { 'content-type': 'text/html' });
-    res.end(computerLearning);
-});
-//Server computer applications 2nd page
-server.get("/computer-learning-page-2", (req, res) => {
-    res.writeHead(404, {'content-type': 'text/html'});
-    res.end(computerLearningPage2);
-});
-//Server computer applications 3rd page
-server.get("/computer-learning-page-3", (req, res) => {
-    res.writeHead(404, {'content-type': 'text/html'});
-    res.end(computerLearningPage3);
-});
-// Throwing an error if anything other than other pages
-server.get('*', (req, res) => {
-    res.writeHead(404, {'content-type': 'text/plain'});
-    res.end("Page not found")
-});
 
 // Server listening on port 8000
 server.listen(serverPort, () => {
