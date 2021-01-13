@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Energy Calculator</title>
+</head>
+<body>
+    <h1>All energy equation calculator</h1>
+    <button id="sync_button">Sync all values</button>
+    <div id="calculators">
+    <div id="potential_energy_calculator">
+        <form>
+            <h3>Potential Energy Calculator</h3>
+        <table>
+            <tr>
+                <th>Potential Energy</th>
+                <th>Mass</th>
+                <th>Acceleration</th>
+                <th>Height</th>
+            </tr>
+            <tr>
+                <td><input type="number" id="potential_energy" placeholder="In Joules"> =</td>
+                <td><input type="number" class="mass" placeholder="In kilograms"> x</td>
+                <td><input type="number" class="acceleration" value="9.81" placeholder="In meters/second/second"> x</td>
+                <td><input type="number" id="height" placeholder="In meters"></td>
+            </tr>
+        </table>
+        <button type="submit">Calculate</button>
+        <button type="reset">Reset all Values</button>
+        </form>
+
+    </div>
+    <div id="kenetic_energy_calculator">
+    <form>
+        <h3>Kenetic Energy Calculator</h3>
+    <table>
+        <tr>
+            <th>Kenetic Energy</th>
+            <th>Mass</th>
+            <th>Velocity</th>
+        </tr>
+        <tr>
+            <td><input type="number" id="kenetic_energy" placeholder="In Joules"> = </td> 
+            <td>0.5 x <input type="number" class="mass" placeholder="In kilograms"> x</td>
+            <td><input type="number" id="velocity" placeholder="In meters/second"></td>
+        </tr>
+    </table>
+    <button type="submit">Calculate</button>
+    <button type="reset">Reset all Values</button>
+    </form>
+
+    </div>
+    </div>
+
+</body>
+</html>
