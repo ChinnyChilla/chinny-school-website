@@ -2,25 +2,23 @@ body {
     background-color: blue;
 
 }
-#container {
+div {
     border: solid black 5px;
+}
+#container {
     background-color: rgba(0, 255, 0, 80);
     width: 80%;
     margin: auto;
 }
 #header {
     background-color: gray;
-    border: solid black 5px;
 }
 #menu {
     background-color: white;
-    border: solid black 5px;
 }
 #body {
     background-color: pink;
-    border: solid black 5px;
 }
 #footer {
     background-color: orange;
-    border: solid black 5px;
 }
