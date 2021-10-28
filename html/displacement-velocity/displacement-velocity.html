@@ -5,40 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Displacement-Velocity Calculator</title>\
     <script type="text/javascript" src="displacement-velocity.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <h1>All the 4 quantities calculator</h1>
     <h3>Hopefully everything you need</h3>
     <br>
     <!-- add some directions -->
- 
-    <table id="table1">
-        <tr>
-            <td><label>Direction</label></td>
-            <td><label>How far?</label></td>
-        </tr>
-        <label></label>
-        <tr>
-            <td>
-                <select id="distance" name="distance" class='select'>
-                    <optgroup label="Simple Directions">
-                        <option value="north">North</option>
-                        <option value="south">South</option>
-                        <option value="east">East</option>
-                        <option value="west">West</option>
-                    </optgroup>
-                </select>
-            </td>
-            <div>
-                <td><input type="number" id="quantity" name="Quantity" class='quantity'></td>
-            </div>
-        </tr>
-    </table>
+    <div id="inputs">
+        <table id="table1">
+            <tr>
+                <td><label>Direction</label></td>
+                <td><label>How far?</label></td>
+            </tr>
+            <label></label>
+            <tr>
+                <td>
+                    <select id="distance" name="distance" class='select'>
+                        <optgroup label="Simple Directions">
+                            <option value="north">North</option>
+                            <option value="south">South</option>
+                            <option value="east">East</option>
+                            <option value="west">West</option>
+                        </optgroup>
+                    </select>
+                </td>
+                <div>
+                    <td><input type="number" id="quantity" name="Quantity" class='quantity'></td>
+                </div>
+            </tr>
+        </table>
 
-    <div id="movethisdown">
-        <input type="button" value="Create a Row" id="createRow"> 
-        <br>
-        <input type="submit" value="Calculate" id="calculate">
+        <div id="buttons">
+            <input type="button" value="Create a Row" id="createRow"> 
+            <br>
+            <input type="submit" value="Calculate" id="calculate">
+        </div>
+        <div>
+            <table id="data">
+                <tr>
+                    <td class="data">Distance</td>
+                    <td class="data">Displacement</td>
+                    <td class="data">Direction</td>
+                    <td class="data">Angle</td>
+                </tr>
+                <tr>
+                    <td id="dataDistance" class="data">0</td>
+                    <td id="dataDisplacement" class="data">0</td>
+                    <td id="dataDirection" class="data"></td>
+                    <td id="dataAngle" class="data">0</td>
+                </tr>
+            </table>
+        </div>
     </div>
+    <!-- <div id="graph">Testing</div> -->
 </body>
 </html>

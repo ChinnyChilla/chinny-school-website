@@ -1,9 +1,9 @@
 
 window.onload = function () {
-    var submitButton = document.getElementById('calculate')
+    var kinematicCalculate = document.getElementById('kinematicCalculate')
     var degreeSubmit = document.getElementById('degreeCalculate')
     
-    submitButton.onclick = function () {
+    kinematicCalculate.onclick = function () {
         console.log("Executing script");
         
         // Gets all values from form

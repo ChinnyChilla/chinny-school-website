@@ -37,9 +37,36 @@ window.onload = function () {
     calculate.onclick = function () {
         var selectedDirection = document.getElementsByClassName('select')
         var quantities = document.getElementsByClassName('quantity')
+        var x = 0;
+        var y = 0;
+        var total = 0;
         for (i = 0; i < selectedDirection.length; i++) {
-            console.log(selectedDirection[i].value)
-            console.log(quantities[i].value)
+            var direction = selectedDirection[i].value
+            var quantity = quantities[i].value ? parseInt(quantities[i].value) : 0
+            if (direction == "north") {
+                y += quantity;
+            } else if (direction == "south") {
+                y-= quantity;
+            } else if (direction == "east") {
+                x -= quantity;
+            } else if (direction == "west") {
+                x += quantity
+            }
+            total += quantity;
         };
-    };
+        console.log(total)
+        document.getElementById('dataDistance').innerHTML = total
+        document.getElementById('dataDisplacement').innerHTML = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
+        var angleDeg = (Math.atan2(y, x) * 180 / Math.PI)
+        console.log("X" + x + "Y" + y)
+        console.log("Angle Degree" + angleDeg)
+        if (angleDeg > 0) {
+            angleDeg -= 90
+        } else {
+            angleDeg += 270
+        }
+        document.getElementById('dataAngle').innerHTML = x == 0 && y == 0 ? 0 : angleDeg
+        const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
+        document.getElementById('dataDirection').innerHTML = directions[Math.round(angleDeg / 45)]
+    };  
 }
