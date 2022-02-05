@@ -45,7 +45,6 @@ window.onload = function () {
         if (acceleration_y !== "") {
             acceleration_y = parseFloat(acceleration_y);
         };
-        
 
         // checks if they are blank
         if (initalVel_x !== "") {
@@ -147,8 +146,12 @@ window.onload = function () {
             for (index = 0; index < valueArray.length; index++) {
                 if (valueArray[index] === "") {
                     emptySpaces_y++;
-                };
+                }
             };
+            if (valueArray.includes(NaN)) {
+                alert("No answer for Y axis :(")
+                break
+            }
             // If solvecount_y is equal to 0 and no values have changed, insufficient information
             console.log("Empty spaces " + emptySpaces_y);
             if(solveCount_y === 0 && emptySpaces_y !== 0) {
@@ -225,8 +228,12 @@ window.onload = function () {
             for (index = 0; index < valueArray_x.length; index++) {
                 if (valueArray_x[index] === "") {
                     emptySpaces_x++;
-                };
+                }
             };
+            if (valueArray_x.includes(NaN)) {
+                alert("No answer for X axis :(")
+                break
+            }
             console.log("Empty spaces " + emptySpaces_x);
             if (solveCount_x === 0 && emptySpaces_x !== 0) {
                 alert("Insufficient information for x axis!");
@@ -246,31 +253,34 @@ window.onload = function () {
         }
 
         // Checks
-        const checkAmount = 2
-        eq1Problem = initalVel_y + acceleration_y * time_y
-        eq2Problem = initalVel_y*time_y + 0.5 * acceleration_y * (time_y * time_y)
-        eq3Problem = initalVel_y * initalVel_y + 2 * acceleration_y * distance_y
-        if (eq1Problem.toFixed(checkAmount) == finalVel_y.toFixed(checkAmount)) {
+        const checkAmount = parseFloat(document.getElementById('checkAnswerAmount').value)
+        eq1Problem = finalVel_y - (initalVel_y + acceleration_y * time_y)
+        eq2Problem = distance_y - (initalVel_y*time_y + 0.5 * acceleration_y * time_y ** 2)
+        eq3Problem = finalVel_y ** 2 - (initalVel_y * initalVel_y + 2 * acceleration_y * distance_y)
+        console.log(`Eq1 Problem offset ${eq1Problem}`)
+        console.log(`Eq2 Problem offset ${eq2Problem}`)
+        console.log(`Eq3 Problem offset ${eq3Problem}`)
+        if (Math.abs(eq1Problem) < checkAmount) {
             document.getElementById('eq1').setAttribute("style", "background-color: #90EE90")
             document.getElementById('eq1').innerText = "PASS"
         } else {
             document.getElementById('eq1').setAttribute("style", "background-color: red")
-            document.getElementById('eq1').innerText = `FAIL\nFailed by ${(finalVel_y - (initalVel_y + acceleration_y * time_y)).toFixed(4)}`
+            document.getElementById('eq1').innerText = `FAIL\nFailed by ${eq1Problem.toFixed(checkAmount.toString().length)}`
             
         }
-        if (eq2Problem.toFixed(checkAmount) == distance_y.toFixed(checkAmount)) {
+        if (Math.abs(eq2Problem) < checkAmount) {
             document.getElementById('eq2').setAttribute("style", "background-color: #90EE90")
             document.getElementById('eq2').innerText = "PASS"
         } else {
             document.getElementById('eq2').setAttribute("style", "background-color: red")
-            document.getElementById('eq2').innerText = `FAIL\nFailed by ${(distance_y - (initalVel_y*time_y + 0.5 * acceleration_y * (time_y * time_y))).toFixed(4)}`
+            document.getElementById('eq2').innerText = `FAIL\nFailed by ${eq2Problem.toFixed(checkAmount.toString().length)}`
         }
-        if (eq3Problem.toFixed(checkAmount) == (finalVel_y ** 2).toFixed(checkAmount)) {
+        if (Math.abs(eq3Problem) < checkAmount) {
             document.getElementById('eq3').setAttribute("style", "background-color: #90EE90")
             document.getElementById('eq3').innerText = "PASS"
         } else {
             document.getElementById('eq3').setAttribute("style", "background-color: red")
-            document.getElementById('eq3').innerText = `FAIL\nFailed by ${(finalVel_y * finalVel_y - (initalVel_y * initalVel_y + 2 * acceleration_y * distance_y)).toFixed(4)}`
+            document.getElementById('eq3').innerText = `FAIL\nFailed by ${eq3Problem.toFixed(checkAmount.toString().length)}`
         }
     };
 };
