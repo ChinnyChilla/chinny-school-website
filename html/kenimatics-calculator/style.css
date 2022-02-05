@@ -1,0 +1,6 @@
+#checks table, #checks td {
+    border: 2px solid black;
+}
+.checkAnswer {
+    padding: 1em 2em;
+}

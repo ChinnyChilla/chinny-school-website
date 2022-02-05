@@ -236,11 +236,41 @@ window.onload = function () {
             } else {solveCount_x === 0};
            
         };
-        document.getElementById("x_inital_velocity").value = initalVel_x.toFixed(3);
-        document.getElementById("x_final_velocity").value = finalVel_x.toFixed(3);
-        document.getElementById("x_average_velocity").value = averageVel_x.toFixed(3);
-        document.getElementById("x_time").value = time_x.toFixed(3);
-        document.getElementById("x_distance").value = distance_x.toFixed(3);
-        document.getElementById("x_acceleration").value = acceleration_x.toFixed(3);
+        if (solveXAxis) {
+            document.getElementById("x_inital_velocity").value = initalVel_x.toFixed(3);
+            document.getElementById("x_final_velocity").value = finalVel_x.toFixed(3);
+            document.getElementById("x_average_velocity").value = averageVel_x.toFixed(3);
+            document.getElementById("x_time").value = time_x.toFixed(3);
+            document.getElementById("x_distance").value = distance_x.toFixed(3);
+            document.getElementById("x_acceleration").value = acceleration_x.toFixed(3);
+        }
+
+        // Checks
+        const checkAmount = 2
+        eq1Problem = initalVel_y + acceleration_y * time_y
+        eq2Problem = initalVel_y*time_y + 0.5 * acceleration_y * (time_y * time_y)
+        eq3Problem = initalVel_y * initalVel_y + 2 * acceleration_y * distance_y
+        if (eq1Problem.toFixed(checkAmount) == finalVel_y.toFixed(checkAmount)) {
+            document.getElementById('eq1').setAttribute("style", "background-color: #90EE90")
+            document.getElementById('eq1').innerText = "PASS"
+        } else {
+            document.getElementById('eq1').setAttribute("style", "background-color: red")
+            document.getElementById('eq1').innerText = `FAIL\nFailed by ${(finalVel_y - (initalVel_y + acceleration_y * time_y)).toFixed(4)}`
+            
+        }
+        if (eq2Problem.toFixed(checkAmount) == distance_y.toFixed(checkAmount)) {
+            document.getElementById('eq2').setAttribute("style", "background-color: #90EE90")
+            document.getElementById('eq2').innerText = "PASS"
+        } else {
+            document.getElementById('eq2').setAttribute("style", "background-color: red")
+            document.getElementById('eq2').innerText = `FAIL\nFailed by ${(distance_y - (initalVel_y*time_y + 0.5 * acceleration_y * (time_y * time_y))).toFixed(4)}`
+        }
+        if (eq3Problem.toFixed(checkAmount) == (finalVel_y ** 2).toFixed(checkAmount)) {
+            document.getElementById('eq3').setAttribute("style", "background-color: #90EE90")
+            document.getElementById('eq3').innerText = "PASS"
+        } else {
+            document.getElementById('eq3').setAttribute("style", "background-color: red")
+            document.getElementById('eq3').innerText = `FAIL\nFailed by ${(finalVel_y * finalVel_y - (initalVel_y * initalVel_y + 2 * acceleration_y * distance_y)).toFixed(4)}`
+        }
     };
 };
