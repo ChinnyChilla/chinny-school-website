@@ -1,8 +1,15 @@
+function checkChecked(element) {
+	if (element.checked) {
+		return document.getElementById("same-xy-time").disabled = false;
+	}
+	return document.getElementById("same-xy-time").disabled = true;
+}
 
 window.onload = function () {
     var kinematicCalculate = document.getElementById('kinematicCalculate')
     var degreeSubmit = document.getElementById('degreeCalculate')
     
+
     kinematicCalculate.onclick = function () {
         console.log("Executing script");
         
@@ -161,12 +168,12 @@ window.onload = function () {
                 exitFlag = true;
             } else {solveCount_y === 0};
         };
-        document.getElementById("y_inital_velocity").value = initalVel_y.toFixed(3);
-        document.getElementById("y_final_velocity").value = finalVel_y.toFixed(3);
-        document.getElementById("y_average_velocity").value = averageVel_y.toFixed(3);
-        document.getElementById("y_time").value = time_y.toFixed(3);
-        document.getElementById("y_distance").value = distance_y.toFixed(3);
-        document.getElementById("y_acceleration").value = acceleration_y.toFixed(3);
+        document.getElementById("y_inital_velocity").value = initalVel_y
+        document.getElementById("y_final_velocity").value = finalVel_y
+        document.getElementById("y_average_velocity").value = averageVel_y
+        document.getElementById("y_time").value = time_y
+        document.getElementById("y_distance").value = distance_y
+        document.getElementById("y_acceleration").value = acceleration_y
         // sees if you want to solve the x-axis
         var solveXAxis = document.getElementById("solve-x-axis").checked;
 
@@ -244,12 +251,12 @@ window.onload = function () {
            
         };
         if (solveXAxis) {
-            document.getElementById("x_inital_velocity").value = initalVel_x.toFixed(3);
-            document.getElementById("x_final_velocity").value = finalVel_x.toFixed(3);
-            document.getElementById("x_average_velocity").value = averageVel_x.toFixed(3);
-            document.getElementById("x_time").value = time_x.toFixed(3);
-            document.getElementById("x_distance").value = distance_x.toFixed(3);
-            document.getElementById("x_acceleration").value = acceleration_x.toFixed(3);
+            document.getElementById("x_inital_velocity").value = initalVel_x
+            document.getElementById("x_final_velocity").value = finalVel_x
+            document.getElementById("x_average_velocity").value = averageVel_x
+            document.getElementById("x_time").value = time_x
+            document.getElementById("x_distance").value = distance_x
+            document.getElementById("x_acceleration").value = acceleration_x
         }
 
         // Checks
