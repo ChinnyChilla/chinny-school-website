@@ -6,10 +6,13 @@
     <title>Project 1</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="kenimatics-calculator.js" defer></script>
-    <script type="text/javascript"></script>
+    <script type="text/javascript" src="drawGraph.js" defer></script>
 
 </head>
 <body>
+	<a href="https://chinny.herokuapp.com"><h1>A better version of website can be found here</h1></a>
+	<h2>chinny.herokuapp.com</h2>
+	<h3>It takes some time to load :(</h3>
     <h2>Kenimatics variable table calculator</h2>
     <h3>Leave the boxes blank if no number!</h3>
     <form name="Kenimatics calculator table" id="KenimaticsTable">
@@ -70,24 +73,9 @@
         How close does it need to be? <input type="number" id="checkAnswerAmount" value="0.01">
         
     </div>
-    <h3>Finding Inital Velocities</h3>
-    <form>
-        <table>
-            <tr>
-                <th>Inital Y Velocity</th>
-                <th>Inital X Velocity</th>
-                <th>Resultant Velocity</th>
-                <th>Degree</th>
-            </tr>
-            <tr>
-                <td><input type="number" name="inital-y-velocity" id="degree-inital-y"></td>
-                <td><input type="number" name="inital-x-velocity" id="degree-inital-x"></td>
-                <td><input type="number" name="resultant-velocity" id="degree-resultant"></td>
-                <td><input type="number" name="degree" id="degree-degree"></td>
-            </tr>
-        </table>
-        <input type="button" value="Calculate" id="degreeCalculate">
-        <input type="reset" value="Clear numbers">
-    </form>
+    <h3>Graph</h3>
+	<button onclick="generateGraph()" type="button">Generate Graph</button>
+	<br>
+	<canvas id="graph" width="2000px" height="1000px"></canvas>
 </body>
 </html>

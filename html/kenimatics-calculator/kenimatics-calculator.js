@@ -9,7 +9,6 @@ window.onload = function () {
     var kinematicCalculate = document.getElementById('kinematicCalculate')
     var degreeSubmit = document.getElementById('degreeCalculate')
     
-
     kinematicCalculate.onclick = function () {
         console.log("Executing script");
         
